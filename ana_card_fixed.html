@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Ana 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+    }
+    body {
+      font-family: 'Dancing Script', cursive;
+      background: linear-gradient(145deg, #ffd6e6, #ffeaf2);
+      color: #333;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 25px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      max-width: 600px;
+      width: 100%;
+      padding: 40px 30px;
+      text-align: center;
+      position: relative;
+      overflow: visible;
+    }
+    .heart {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 2.5rem;
+      color: #ff66a3;
+      z-index: 2;
+    }
+    .profile {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #ffb3c6;
+      margin: 0 auto 20px;
+      animation: pulse 2s infinite;
+      display: block;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #ff3399;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 30px;
+      font-size: 1.1rem;
+      color: #fff;
+      background: #ff3385;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: background 0.3s;
+      margin-top: 25px;
+    }
+    .btn:hover {
+      background: #e62e77;
+    }
+    .dates {
+      background: #ffe0ec;
+      padding: 20px;
+      border-radius: 15px;
+      margin-top: 20px;
+    }
+    .dates p {
+      margin: 8px 0;
+    }
+    .counter {
+      font-size: 1.6rem;
+      color: #e60073;
+      font-weight: bold;
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="https://cdn.glitch.global/8ac8e947-924e-419d-a406-c3cb3d3aa682/Wonder%20Girls%20-%20Rewind.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio HTML5.
+  </audio>
+  <div class="card">
+    <div class="heart">❤️</div>
+    <img src="ana.jpg" alt="Foto da Ana" class="profile" />
+    <h1>Oi, Ana!</h1>
+    <p>Você é meu motivo de sorrir todos os dias. Obrigado por existir!</p>
+    <div class="dates">
+      <p><strong>Nos conhecemos:</strong> 12 de Maio de 2025 💫</p>
+      <p><strong>Começamos a namorar:</strong> 10 de Junho de 2025 💍</p>
+      <p><span class="counter" id="daysTogether"></span> dias juntos 💖</p>
+      <p><span class="counter" id="weeksTogether"></span> semanas de amor 💞</p>
+      <p><span class="counter" id="monthsTogether"></span> meses apaixonados 🌹</p>
+    </div>
+    <a href="#" class="btn">Te amo 💕</a>
+    <footer>&copy; 2025 Feito com amor, só pra você 💖</footer>
+  </div>
+  <script>
+    const startDate = new Date("2025-06-10T00:00:00");
+    const now = new Date();
+    const diff = now - startDate;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const weeks = Math.floor(days / 7);
+    const months = (now.getFullYear() - startDate.getFullYear()) * 12 + (now.getMonth() - startDate.getMonth());
+
+    document.getElementById("daysTogether").textContent = days;
+    document.getElementById("weeksTogether").textContent = weeks;
+    document.getElementById("monthsTogether").textContent = months;
+  </script>
+</body>
+</html>
