@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Para Ana 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Progress Bar -->
+  <div class="progress-bar" id="progressBar"></div>
+  
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator">
+    <div class="scroll-dot active" onclick="scrollToSection(0)"></div>
+    <div class="scroll-dot" onclick="scrollToSection(1)"></div>
+    <div class="scroll-dot" onclick="scrollToSection(2)"></div>
+    <div class="scroll-dot" onclick="scrollToSection(3)"></div>
+    <div class="scroll-dot" onclick="scrollToSection(4)"></div>
+  </div>
+  
+  <div class="scroll-container" id="scrollContainer">
+    <!-- Seção 1: Intro -->
+    <section class="section section-1">
+      <div class="intro-content">
+        <div class="intro-heart">💖</div>
+        <h1 class="intro-title">Para Ana</h1>
+        <p class="intro-subtitle">Meu Amorzinho</p>
+      </div>
+      <div class="scroll-hint">
+        <div>Deslize para cima</div>
+        <div style="font-size: 1.5rem; margin-top: 5px;">↑</div>
+      </div>
+    </section>
+
+    <!-- Seção 2: Perfil -->
+    <section class="section section-2" data-section="1">
+      <div class="profile-card">
+        <img src="ana.jpg" alt="Ana" class="profile-image">
+        <h2 class="profile-name">Ana</h2>
+        <p class="profile-text">
+          A pessoa mais especial do mundo, que trouxe cor e alegria para minha vida. 
+          Cada dia ao seu lado é uma nova aventura cheia de amor e carinho.
+        </p>
+      </div>
+    </section>
+
+    <!-- Seção 3: Timeline -->
+    <section class="section section-3" data-section="2">
+      <div class="timeline">
+        <h2 class="timeline-title">Nossa História</h2>
+        <div class="timeline-item" data-delay="0">
+          <div class="timeline-date">12 de Maio de 2025</div>
+          <div class="timeline-event">Primeiro Encontro</div>
+          <div class="timeline-emoji">✨</div>
+        </div>
+        <div class="timeline-item" data-delay="200">
+          <div class="timeline-date">10 de Junho de 2025</div>
+          <div class="timeline-event">Começamos a Namorar</div>
+          <div class="timeline-emoji">💕</div>
+        </div>
+        <div class="timeline-item" data-delay="400">
+          <div class="timeline-date">Hoje</div>
+          <div class="timeline-event">Mais Apaixonados que Nunca</div>
+          <div class="timeline-emoji">🥰</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção 4: Contadores -->
+    <section class="section section-4" data-section="3">
+      <div class="counters-container">
+        <h2 class="counters-title">Nosso Amor em Números</h2>
+        <div class="counter-grid">
+          <div class="counter-item" data-delay="0">
+            <div class="counter-number" id="daysCounter">0</div>
+            <div class="counter-label">Dias Juntos</div>
+          </div>
+          <div class="counter-item" data-delay="200">
+            <div class="counter-number" id="weeksCounter">0</div>
+            <div class="counter-label">Semanas de Amor</div>
+          </div>
+          <div class="counter-item" data-delay="400">
+            <div class="counter-number" id="monthsCounter">0</div>
+            <div class="counter-label">Meses Apaixonados</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção 5: Mensagem Final -->
+    <section class="section section-5" data-section="4">
+      <div class="final-content">
+        <div class="final-heart">❤️</div>
+        <div class="final-message">
+          Te amo mais que as estrelas no céu e mais que os grãos de areia no mar
+        </div>
+        <button class="love-button" onclick="showLoveMessage()">
+          Clique aqui 💕
+        </button>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
