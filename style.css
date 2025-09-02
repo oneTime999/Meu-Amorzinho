@@ -1,0 +1,510 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  background: #000;
+  position: relative;
+}
+
+/* Scroll Snap Container */
+.scroll-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+/* Seções */
+.section {
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Indicador de scroll */
+.scroll-indicator {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.scroll-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.scroll-dot.active {
+  background: #ff6b9d;
+  box-shadow: 0 0 20px rgba(255, 107, 157, 0.6);
+  transform: scale(1.2);
+}
+
+/* Seção 1 - Intro */
+.section-1 {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-size: 400% 400%;
+  animation: gradientMove 8s ease infinite;
+}
+
+@keyframes gradientMove {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.intro-content {
+  text-align: center;
+  color: white;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: slideUpFade 1s ease-out 0.5s forwards;
+}
+
+.intro-heart {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  animation: heartPulse 2s ease-in-out infinite;
+}
+
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.intro-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.intro-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-bottom: 40px;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  text-align: center;
+  opacity: 0.7;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* Seção 2 - Perfil */
+.section-2 {
+  background: linear-gradient(45deg, #ff6b9d, #c471ed);
+  position: relative;
+}
+
+.profile-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 30px;
+  padding: 40px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.profile-card.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid rgba(255, 255, 255, 0.3);
+  margin: 0 auto 30px;
+  display: block;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.profile-image:hover {
+  transform: scale(1.05);
+}
+
+.profile-name {
+  font-family: 'Dancing Script', cursive;
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 15px;
+  text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.profile-text {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Seção 3 - Timeline */
+.section-3 {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  background-size: 400% 400%;
+  animation: gradientMove 10s ease infinite;
+}
+
+.timeline {
+  max-width: 350px;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease-out;
+}
+
+.timeline.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  color: white;
+  text-align: center;
+  margin-bottom: 40px;
+  text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.timeline-item {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  transform: translateX(-50px);
+  opacity: 0;
+  transition: all 0.6s ease-out;
+}
+
+.timeline-item.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.timeline-date {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+.timeline-event {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.timeline-emoji {
+  font-size: 1.5rem;
+  float: right;
+}
+
+/* Seção 4 - Contadores */
+.section-4 {
+  background: linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef, #f093fb);
+  background-size: 300% 300%;
+  animation: gradientMove 6s ease infinite;
+}
+
+.counters-container {
+  text-align: center;
+  color: white;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.counters-container.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.counters-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.8rem;
+  margin-bottom: 40px;
+  text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.counter-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.counter-item {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border-radius: 25px;
+  padding: 30px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 0.6s ease-out;
+}
+
+.counter-item.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.counter-number {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  background: linear-gradient(45deg, #fff, #f0f0f0);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.counter-label {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  font-weight: 400;
+}
+
+/* Seção 5 - Mensagem Final */
+.section-5 {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  text-align: center;
+  color: white;
+}
+
+.final-content {
+  max-width: 350px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease-out;
+}
+
+.final-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.final-heart {
+  font-size: 5rem;
+  margin-bottom: 30px;
+  animation: heartPulse 2s ease-in-out infinite;
+}
+
+.final-message {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.2rem;
+  line-height: 1.4;
+  margin-bottom: 40px;
+  text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.love-button {
+  background: linear-gradient(45deg, #ff6b9d, #c471ed);
+  border: none;
+  border-radius: 50px;
+  padding: 18px 40px;
+  font-size: 1.3rem;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 15px 35px rgba(255, 107, 157, 0.4);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.love-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.5s;
+}
+
+.love-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 45px rgba(255, 107, 157, 0.5);
+}
+
+.love-button:hover::before {
+  left: 100%;
+}
+
+.love-button:active {
+  transform: translateY(-1px);
+}
+
+/* Partículas flutuantes */
+.particle {
+  position: fixed;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Animações gerais */
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(50px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Love message popup */
+.love-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: linear-gradient(45deg, #ff6b9d, #c471ed);
+  color: white;
+  padding: 30px 40px;
+  border-radius: 25px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  z-index: 2000;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  text-align: center;
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.love-popup.show {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Progress bar melhorada */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #ff6b9d 0%, #c471ed 50%, #667eea 100%);
+  z-index: 1000;
+  transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 2px 10px rgba(255, 107, 157, 0.6);
+  border-radius: 0 3px 3px 0;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8));
+  animation: progressShimmer 2s ease-in-out infinite;
+}
+
+@keyframes progressShimmer {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+/* Efeitos de transição melhorados */
+@keyframes slideUpFade {
+  from { 
+    opacity: 0; 
+    transform: translateY(80px) scale(0.9);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heartPulse {
+  0%, 100% { 
+    transform: scale(1);
+    filter: drop-shadow(0 0 20px rgba(255, 107, 157, 0.8));
+  }
+  50% { 
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 30px rgba(255, 107, 157, 1));
+  }
+}
+
+/* Love message popup simplificado */
+.love-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: linear-gradient(45deg, #ff6b9d, #c471ed);
+  color: white;
+  padding: 30px 40px;
+  border-radius: 25px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  z-index: 2000;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  text-align: center;
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  max-width: 90vw;
+}
+
+.love-popup.show {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Animações para contadores */
+@keyframes counterShimmer {
+  0%, 100% { 
+    background-position: 0% 50%; 
+    filter: brightness(1);
+  }
+  50% { 
+    background-position: 100% 50%; 
+    filter: brightness(1.2);
+  }
+}
